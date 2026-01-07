@@ -29,7 +29,7 @@ jobs:
           username: u708902201.stdlaasyalabs
           password: stdlaasyalabsLL@1234
           local-dir: extracted/
-          server-dir: /public_html/subdomains/${{ github.event.repository.name }}/
+          server-dir: public_html/subdomains/${{ github.event.repository.name }}/
 
       - name: Upload ZIP for unzip.php
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
