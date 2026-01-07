@@ -22,7 +22,7 @@ jobs:
           mkdir -p extracted
           unzip -o "$ZIP_FILE" -d extracted
 
-      - name: FTP Upload to subdomain folder
+      - name: FTP Upload Extracted Files to Subdomain
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.laasyalabs.com
@@ -30,6 +30,11 @@ jobs:
           password: stdlaasyalabsLL@1234
           local-dir: extracted/
           server-dir: ${{ github.event.repository.name }}/
+          exclude: |
+            .git*/
+            .github*/
+            README.md
+            .ftp_deploy_sync_state.json
 
       - name: Upload ZIP for unzip.php
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -41,7 +46,10 @@ jobs:
           server-dir: ${{ github.event.repository.name }}/
           exclude: |
             extracted/**
-            .github/**
+            .git*/
+            .github*/
+            README.md
+            .ftp_deploy_sync_state.json
 
       - name: Trigger unzip
         run: |
