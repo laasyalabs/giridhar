@@ -37,7 +37,7 @@ jobs:
           server: ftp.laasyalabs.com
           username: u708902201.stdlaasyalabs
           password: stdlaasyalabsLL@1234
-          local-dir: .
+          local-dir: ./
           server-dir: /public_html/subdomains/${{ github.event.repository.name }}/
           exclude: |
             extracted/**
